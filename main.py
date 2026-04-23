@@ -31,12 +31,12 @@ def signup():
             return render_template("Signup.html",error="Email already exists")
         db_user=User.query.filter_by(name=name).first()
         if db_user:
-            return render_template("Signup.html",error="Name already exists")
+            return render_template("signup.html",error="Name already exists")
         user=User(name=name,email=email,password=password)
         db.session.add(user)
         db.session.commit()
-        return render_template("Login.html")    
-    return render_template("Signup.html")
+        return render_template("login.html")    
+    return render_template("signup.html")
 
 @app.route("/login",methods=["POST","GET"])
 def login():
